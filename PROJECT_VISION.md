@@ -18,6 +18,7 @@ The platform combines:
 - Semester-level planning and roadmaps
 - Grade optimization insights
 - Cloud-synced, personalized academic data
+- Multi-college support with dynamically weighted credit structures
 
 ---
 
@@ -82,17 +83,18 @@ These are the strategic capabilities GPA Engine must evolve toward:
 
 The following capabilities are planned or in active development alignment:
 
-| Feature | Description |
-|---------|-------------|
-| **Multi-Semester Support** | Semesters 1–8 with year-grouped academic roadmap |
-| **Academic Roadmap** | Visual navigation: Year → Semester → Mode → Workspace |
-| **Grade Boundary Analysis** | Subjects within reach of next grade, ranked by SGPA impact |
-| **Credit Leverage Engine** | Highlight high-credit subjects with maximum SGPA influence |
-| **Smart Recommendations** | Context-aware suggestions based on marks, targets, and credits |
-| **Cloud Synchronization** | Profile, marks, targets, and preferences stored per user |
-| **Performance Analytics** | SGPA trend, CGPA progress, and subject comparison charts |
-| **Onboarding & Profile** | One-time setup: branch, college, targets, past semester SGPA |
-| **Under-Development Semesters** | Professional placeholder UI for semesters not yet implemented |
+| Feature | Description | Status |
+|---------|-------------|--------|
+| **Onboarding & Profile** | One-time setup: branch, college, targets, past semester SGPA | ✅ Implemented |
+| **Cloud Synchronization** | Profile, marks, targets, and preferences stored per user | ✅ Implemented |
+| **Multi-College Config** | Support for multiple colleges with custom credit weighting | ✅ Implemented |
+| **Multi-Semester Support** | Semesters 1–8 with year-grouped academic roadmap | ✅ Implemented (UI/Logic) |
+| **Academic Roadmap** | Visual navigation: Year → Semester → Mode → Workspace | 🚧 In Progress |
+| **Grade Boundary Analysis** | Subjects within reach of next grade, ranked by SGPA impact | 🚧 In Progress (Sem 3) |
+| **Credit Leverage Engine** | Highlight high-credit subjects with maximum SGPA influence | 🚧 In Progress (Sem 3) |
+| **Smart Recommendations** | Context-aware suggestions based on marks, targets, and credits | 📅 Planned |
+| **Performance Analytics** | SGPA trend, CGPA progress, and subject comparison charts | 📅 Planned |
+| **Under-Development Semesters** | Professional placeholder UI for semesters not yet implemented | ✅ Implemented |
 
 ---
 

@@ -1,0 +1,818 @@
+/* ============================================================
+   DASHBOARD — Premium Dark Theme
+   GPA Engine · Phase 1 Dashboard
+   ============================================================ */
+
+/* ── Base ─────────────────────────────────────────────── */
+.dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Hero Section ─────────────────────────────────────── */
+.dash-hero {
+  background: linear-gradient(135deg, #1a1035 0%, #0d1b3e 60%, #0f1a2e 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-hero::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(74, 125, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dash-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.dash-hero-greeting {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-hero-wave {
+  font-size: 1.8rem;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(15deg); }
+}
+
+.dash-hero h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.dash-hero-name {
+  background: linear-gradient(135deg, #d4a843, #f0d078);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dash-hero-subtitle {
+  color: #8a8a9a;
+  font-size: 0.9rem;
+  margin: 8px 0 0;
+  letter-spacing: 0.02em;
+}
+
+.dash-hero-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dash-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dash-badge-sem {
+  background: rgba(74, 125, 255, 0.15);
+  color: #6b9fff;
+  border: 1px solid rgba(74, 125, 255, 0.2);
+}
+
+.dash-badge-year {
+  background: rgba(212, 168, 67, 0.12);
+  color: #d4a843;
+  border: 1px solid rgba(212, 168, 67, 0.2);
+}
+
+/* ── Progress Ring ────────────────────────────────────── */
+.progress-ring {
+  filter: drop-shadow(0 0 12px rgba(212, 168, 67, 0.25));
+}
+
+.progress-ring-fill {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-ring-value {
+  fill: #f0f0f5;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.progress-ring-label {
+  fill: #8a8a9a;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── KPI Cards ────────────────────────────────────────── */
+.dash-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.dash-kpi-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.dash-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dash-kpi-gold {
+  border-color: rgba(212, 168, 67, 0.2);
+}
+
+.dash-kpi-gold:hover {
+  border-color: rgba(212, 168, 67, 0.35);
+  box-shadow: 0 8px 32px rgba(212, 168, 67, 0.08);
+}
+
+.dash-kpi-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dash-kpi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.dash-kpi-label {
+  font-size: 0.72rem;
+  color: #8a8a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.dash-kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f0f0f5;
+  line-height: 1.1;
+}
+
+.dash-kpi-detail {
+  font-size: 0.72rem;
+  color: #6a6a7a;
+}
+
+.dash-kpi-minibar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.dash-kpi-minibar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a7dff, #6b9fff);
+  border-radius: 2px;
+  transition: width 0.8s ease;
+}
+
+/* ── Academic Health Meter ─────────────────────────────── */
+.dash-health-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.dash-health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dash-health-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin: 0;
+}
+
+.dash-health-badge {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dash-health-excellent { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2); }
+.dash-health-good { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.15); }
+.dash-health-warning { background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2); }
+.dash-health-danger { background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+.dash-health-unknown { background: rgba(138, 138, 154, 0.1); color: #8a8a9a; border: 1px solid rgba(138, 138, 154, 0.15); }
+
+.dash-health-gauge {
+  margin-bottom: 12px;
+}
+
+.dash-health-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ef4444 0%, #f59e0b 35%, #22c55e 65%, #10b981 100%);
+  position: relative;
+}
+
+.dash-health-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f0f0f5;
+  border: 3px solid #0a0a0f;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dash-health-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.65rem;
+  color: #6a6a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dash-health-detail {
+  font-size: 0.75rem;
+  color: #6a6a7a;
+  margin: 0;
+}
+
+/* ── Goal Progress Card ───────────────────────────────── */
+.dash-goal-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.dash-goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dash-goal-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin: 0;
+}
+
+.dash-goal-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.dash-goal-numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  color: #8a8a9a;
+}
+
+.dash-goal-numbers strong {
+  color: #f0f0f5;
+}
+
+.dash-goal-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dash-goal-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4a843, #f0d078);
+  border-radius: 5px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.3);
+}
+
+.dash-goal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.75rem;
+}
+
+.dash-goal-gap {
+  color: #d4a843;
+  font-weight: 600;
+}
+
+.dash-goal-pct {
+  color: #8a8a9a;
+}
+
+/* ── Academic Snapshot ─────────────────────────────────── */
+.dash-snapshot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.dash-snapshot-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.dash-snapshot-val {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f0f0f5;
+}
+
+.dash-snapshot-label {
+  font-size: 0.72rem;
+  color: #8a8a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  text-align: center;
+}
+
+.dash-snapshot-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* ── Section Title ────────────────────────────────────── */
+.dash-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin: 0 0 16px;
+}
+
+/* ── Academic Roadmap ─────────────────────────────────── */
+.dash-roadmap {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.dash-roadmap-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dash-roadmap-year {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.dash-roadmap-year-label {
+  min-width: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6a6a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dash-roadmap-sems {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.dash-roadmap-sem {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+}
+
+.dash-roadmap-sem:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dash-roadmap-active {
+  border-color: rgba(74, 125, 255, 0.35);
+  box-shadow: 0 0 20px rgba(74, 125, 255, 0.1);
+}
+
+.dash-roadmap-active:hover {
+  border-color: rgba(74, 125, 255, 0.5);
+  box-shadow: 0 0 28px rgba(74, 125, 255, 0.15);
+}
+
+.dash-roadmap-legacy {
+  border-color: rgba(34, 197, 94, 0.15);
+}
+
+.dash-roadmap-legacy:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.dash-roadmap-coming-soon {
+  opacity: 0.5;
+}
+
+.dash-roadmap-coming-soon:hover {
+  opacity: 0.65;
+}
+
+.dash-sem-num {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f0f0f5;
+}
+
+.dash-sem-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dash-sem-badge-active { color: #4a7dff; }
+.dash-sem-badge-legacy { color: #22c55e; }
+.dash-sem-badge-coming-soon { color: #6a6a7a; }
+
+.dash-sem-underdev {
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: #f59e0b;
+  animation: fadeIn 0.2s ease;
+}
+
+.dash-sem-underdev p {
+  margin: 6px 0 0;
+  color: #8a8a9a;
+  font-size: 0.7rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Recent Activity ──────────────────────────────────── */
+.dash-activity {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.dash-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dash-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dash-activity-item:last-child {
+  border-bottom: none;
+}
+
+.dash-activity-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dash-activity-text {
+  flex: 1;
+  font-size: 0.82rem;
+  color: #c0c0cc;
+}
+
+.dash-activity-time {
+  font-size: 0.7rem;
+  color: #6a6a7a;
+  flex-shrink: 0;
+}
+
+/* ── Quick Actions ────────────────────────────────────── */
+.dash-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dash-action-btn {
+  flex: 1;
+  min-width: 160px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dash-action-primary {
+  background: linear-gradient(135deg, #4a7dff, #3b6ce8);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(74, 125, 255, 0.25);
+}
+
+.dash-action-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(74, 125, 255, 0.35);
+}
+
+.dash-action-secondary {
+  background: transparent;
+  color: #d4a843;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+}
+
+.dash-action-secondary:hover {
+  background: rgba(212, 168, 67, 0.08);
+  border-color: rgba(212, 168, 67, 0.5);
+}
+
+.dash-action-muted {
+  background: rgba(255, 255, 255, 0.04);
+  color: #6a6a7a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ── Formula Strip ────────────────────────────────────── */
+.dash-formula-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 0;
+  font-size: 0.7rem;
+  color: #5a5a6a;
+  letter-spacing: 0.02em;
+}
+
+.dash-formula-dot {
+  color: #3a3a4a;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .dash-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dash-hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dash-hero-greeting {
+    justify-content: center;
+  }
+
+  .dash-hero-badges {
+    justify-content: center;
+  }
+
+  .dash-roadmap-year {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dash-roadmap-year-label {
+    min-width: auto;
+  }
+
+  .dash-roadmap-sems {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 0 14px 32px;
+    gap: 14px;
+  }
+
+  .dash-hero {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .dash-hero h1 {
+    font-size: 1.3rem;
+  }
+
+  .dash-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-snapshot {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .dash-snapshot-divider {
+    width: 60%;
+    height: 1px;
+  }
+
+  .dash-roadmap-sems {
+    flex-direction: column;
+  }
+
+  .dash-actions {
+    flex-direction: column;
+  }
+
+  .dash-action-btn {
+    min-width: auto;
+  }
+
+  .dash-formula-strip {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .dash-formula-dot {
+    display: none;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .dash-hero {
+    padding: 20px 16px;
+  }
+
+  .dash-hero h1 {
+    font-size: 1.15rem;
+  }
+
+  .progress-ring-value {
+    font-size: 1.4rem;
+  }
+}
+
+/* ── Edit Profile Button (Enabled) ───────────────────────── */
+.dash-action-settings {
+  background: rgba(255, 255, 255, 0.04);
+  color: #a0a0b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  font-family: "Inter", sans-serif;
+}
+
+.dash-action-settings:hover {
+  background: rgba(74, 125, 255, 0.1);
+  color: #c0c8ff;
+  border-color: rgba(74, 125, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.dash-action-settings:active {
+  transform: translateY(0);
+}
+
+/* ── Completed Semester Status ───────────────────────────── */
+.dash-roadmap-completed {
+  background: rgba(45, 212, 160, 0.06);
+  border-color: rgba(45, 212, 160, 0.2) !important;
+}
+
+.dash-roadmap-completed:hover {
+  background: rgba(45, 212, 160, 0.1);
+  border-color: rgba(45, 212, 160, 0.35) !important;
+}
+
+.dash-sem-badge-completed {
+  color: #2dd4a0;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* SGPA chip on completed semesters */
+.dash-sem-sgpa {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(45, 212, 160, 0.8);
+  margin-top: 4px;
+  font-weight: 500;
+}
+

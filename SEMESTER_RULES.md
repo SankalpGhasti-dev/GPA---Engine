@@ -67,6 +67,8 @@ CGPA = Σ(SGPAᵢ × Creditsᵢ) ÷ Σ(Creditsᵢ)
 
 For completed semesters, use finalized SGPA. For the current semester, use **predicted SGPA** from entered marks.
 
+> **Note on Credits (V2 Architecture):** The credit weighting (`Creditsᵢ`) is now dynamically sourced from the user's selected college configuration (e.g., `src/data/colleges/sitcoe.js`). This ensures CGPA calculates correctly across different universities with varying credit structures.
+
 ---
 
 ## Component Type Definitions

@@ -18,9 +18,9 @@
 
 ## 🎯 What is GPA Engine?
 
-GPA Engine is a web-based application that solves a critical problem for engineering students: **"What exactly do I need to score to achieve my target SGPA?"**
+GPA Engine is a web-based application that solves a critical problem for engineering students: **"What exactly do I need to score to achieve my target SGPA or CGPA?"**
 
-Instead of guessing, students get a precise, subject-by-subject breakdown of minimum marks required. It's like having a personal academic advisor in your browser.
+Instead of guessing, students get a precise, subject-by-subject breakdown of minimum marks required. It's like having a personal academic advisor in your browser. With our **V2 Architecture**, GPA Engine is evolving into a personalized, multi-college academic operating system.
 
 ### Real-World Example
 
@@ -32,53 +32,51 @@ Instead of guessing, students get a precise, subject-by-subject breakdown of min
 
 ## ✨ Key Features
 
-### 1. **Reverse Engineering Mode** 🔄
+### 1. **Personalized Academic Profile** 👤
+- 4-step Onboarding Wizard for first-time users
+- Set college, branch, current semester, and academic goals
+- Centralized Dashboard tailored to your current academic standing
+
+### 2. **Multi-College Support** 🏫
+- Native configurations for SITCOE (Ichalkaranji) and D.Y. Patil (Kolhapur)
+- "Other College" fallback for any university
+- Custom credit-weighted CGPA calculations per college
+
+### 3. **Reverse Engineering Mode** 🔄
 Enter your current marks → Get exact Endsem requirements
 - Subject-by-subject breakdown
 - Feasibility analysis (achievable/not achievable)
 - Auto-save to cloud
 
-### 2. **Target Planning Mode** 🎯
+### 4. **Target Planning Mode** 🎯
 Set target SGPA → Get full marks roadmap for fresh semester
 - Component-wise minimum marks
 - Credit leverage ranking (which subjects matter most)
 - All grade options displayed
 
-### 3. **Grade Boundary Analyzer** 📊
+### 5. **Grade Boundary Analyzer** 📊
 Identifies subjects within reach of next grade
 - Ranked by ROI (credit points per mark)
 - Highlights quick wins
 - Example: "Just 3 marks away from AA in Math"
 
-### 4. **Risk Analysis** ⚠️
+### 6. **Risk Analysis** ⚠️
 Detects vulnerable grades (±3 mark variation impact)
 - SGPA loss if grade drops
 - Helps avoid risky subjects
 - Ranked by severity
 
-### 5. **Credit Leverage Engine** ⚡
+### 7. **Credit Leverage Engine** ⚡
 Shows which subjects have biggest SGPA impact
 - 4-credit subjects worth 0.19 SGPA per GP
 - Visual ranking
 - Helps optimize effort
 
-### 6. **Smart Sync** ☁️
+### 8. **Smart Sync** ☁️
 - Google Sign-In for quick setup
-- Auto-save to cloud (Firestore)
+- Auto-save to cloud (Firestore) with 1.2s debounce
 - Marks accessible across devices
 - Local fallback (continue offline)
-
-### 7. **Control Index** 💪
-Shows what % of marks you actually control
-- CA1+CA2 = what you control
-- Midsem = partial control  
-- Endsem = exam only
-- Helps understand leverage
-
-### 8. **Live Calculations** ⚙️
-- Real-time SGPA calculation
-- Instant feasibility checks
-- No page refresh needed
 
 ---
 
@@ -164,13 +162,19 @@ GPA---Engine/
 │   ├── App.js                  # Main app component
 │   ├── components/
 │   │   ├── AuthPage.js         # Login/signup UI
+│   │   ├── Onboarding.js       # First-time profile setup
+│   │   ├── Dashboard.js        # V2 Personalized Dashboard
+│   │   ├── ProfileModal.js     # Edit Profile functionality
 │   │   ├── MarksMode.js        # Reverse engineering
 │   │   └── TargetMode.js       # Target planning
 │   ├── data/
-│   │   └── engine.js           # Core calculation engine
-│   └── firebase/
-│       ├── config.js           # Firebase setup
-│       └── localAuth.js        # Local fallback
+│   │   ├── engine.js           # Core calculation engine
+│   │   └── colleges/           # College-specific credit configs
+│   ├── firebase/
+│   │   ├── config.js           # Firebase setup
+│   │   └── localAuth.js        # Local fallback
+│   └── hooks/
+│       └── useUserData.js      # React hook for central state
 │
 ├── public/
 │   ├── index.html              # HTML entry
@@ -331,21 +335,24 @@ npm run eject      # Advanced: Eject from CRA (not reversible)
 
 ---
 
+## 📈 Current Project Status
+
+**Phase 1: Student Profile, Multi-College Foundation & Academic History — COMPLETED**
+- GPA Engine has successfully migrated from a single-semester calculator to a personalized, multi-college academic platform.
+
+### ✅ Completed Phases
+1. **Phase 1:** Centralized `useUserData` state, Onboarding Wizard, Edit Profile Modal, Credit-Weighted CGPA Engine, and Multi-College Configuration (SITCOE, D.Y. Patil).
+
+### 🚀 Upcoming Roadmap
+- **Phase 2:** Semester 3 Workspace Implementation (New Grade System, Planning Mode).
+- **Phase 3:** Analytics Dashboard (Historical CGPA trends, visualizations).
+- **Phase 4:** Mobile App transition / PWA enhancements.
+
 ## 🐛 Known Limitations
 
 - ⚠️ Can't see full SGPA until Endsem entered (incomplete data)
-- ⚠️ Only current semester (not multi-semester CGPA)
-- ⚠️ No historical semester tracking yet
 - ⚠️ Manual calculation (by design for privacy)
 - ⚠️ LocalStorage cleared on browser data clear
-
-### Future Enhancements
-- [ ] CGPA (cumulative GPA) tracking
-- [ ] Historical semester data
-- [ ] Study schedule optimization
-- [ ] Peer comparison (anonymized)
-- [ ] SMS/Email alerts
-- [ ] Mobile native app
 
 ---
 

@@ -1,0 +1,83 @@
+/* ============================================================
+   SEM3 WORKSPACE — Additional Styles
+   Extends App.css patterns for Sem3-specific elements
+   ============================================================ */
+
+.sem3-workspace .logo-badge {
+  font-size: 0.7rem;
+}
+
+/* Custom name input for elective/minor subjects */
+.custom-name-block {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.custom-name-input {
+  width: 100%;
+  max-width: 320px;
+  font-size: 0.85rem !important;
+}
+
+/* Scenario strip (planning mode) */
+.scenarios-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.scenario-chip {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+  transition: all 0.2s ease;
+}
+
+.scenario-chip.sc-ok {
+  border-color: rgba(34, 197, 94, 0.2);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.scenario-chip.sc-below {
+  opacity: 0.5;
+}
+
+.sc-sgpa-val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f0f5;
+}
+
+.sc-sgpa-label {
+  font-size: 0.65rem;
+  color: #8a8a9a;
+  margin-top: 2px;
+}
+
+/* Type pills for Sem3 types */
+.pill.type-theory100_ese { background: rgba(74, 125, 255, 0.15); color: #6b9fff; }
+.pill.type-theory50_ca25 { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+.pill.type-lab_viva { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+.pill.type-custom_theory50 { background: rgba(212, 168, 67, 0.15); color: #d4a843; }
+
+/* Override leverage bar max for Sem3 (max 3 credits instead of 4) */
+.sem3-workspace .lev-fill {
+  transition: width 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scenarios-strip {
+    flex-direction: column;
+  }
+
+  .scenario-chip {
+    min-width: auto;
+  }
+}

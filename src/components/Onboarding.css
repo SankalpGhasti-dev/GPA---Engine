@@ -1,0 +1,461 @@
+/* ============================================================
+   ONBOARDING WIZARD — GPA Engine
+   Premium dark-theme 4-step setup experience
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ── Fullscreen overlay ──────────────────────────────────── */
+.onb-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a14 0%, #0d0f1e 50%, #0a0d1a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 20px 60px;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient glow */
+.onb-root::before {
+  content: "";
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(74, 125, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Brand header ────────────────────────────────────────── */
+.onb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+  animation: onb-fadein 0.5s ease both;
+}
+
+.onb-brand-badge {
+  background: linear-gradient(135deg, #d4a843, #f0d078);
+  color: #0a0a14;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.onb-brand-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  letter-spacing: -0.01em;
+}
+
+/* ── Step progress bar ───────────────────────────────────── */
+.onb-progress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+  animation: onb-fadein 0.5s 0.1s ease both;
+}
+
+.onb-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.onb-step-dot.active {
+  border-color: #4a7dff;
+  color: #fff;
+  background: rgba(74, 125, 255, 0.2);
+  box-shadow: 0 0 12px rgba(74, 125, 255, 0.3);
+}
+
+.onb-step-dot.done {
+  border-color: #2dd4a0;
+  color: #2dd4a0;
+  background: rgba(45, 212, 160, 0.12);
+}
+
+.onb-step-line {
+  width: 48px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease;
+}
+
+.onb-step-line.done {
+  background: rgba(45, 212, 160, 0.4);
+}
+
+/* ── Card container ──────────────────────────────────────── */
+.onb-card {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(145deg, #141428, #0f1223);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  animation: onb-slidein 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes onb-slidein {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes onb-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Step header ─────────────────────────────────────────── */
+.onb-step-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4a7dff;
+  margin-bottom: 6px;
+}
+
+.onb-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f0f0f5;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.onb-subtitle {
+  font-size: 0.875rem;
+  color: #6a6a80;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+.onb-subtitle a,
+.onb-subtitle strong {
+  color: #8a8aaa;
+  font-weight: 500;
+}
+
+/* ── Form elements ───────────────────────────────────────── */
+.onb-field {
+  margin-bottom: 18px;
+}
+
+.onb-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #8a8aaa;
+  margin-bottom: 7px;
+  letter-spacing: 0.01em;
+}
+
+.onb-label span.required {
+  color: #ff6b6b;
+  margin-left: 3px;
+}
+
+.onb-input,
+.onb-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f0f0f5;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.onb-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236a6a80' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.onb-select option {
+  background: #1a1a2e;
+  color: #f0f0f5;
+}
+
+.onb-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.onb-input:focus,
+.onb-select:focus {
+  border-color: rgba(74, 125, 255, 0.5);
+  background: rgba(74, 125, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(74, 125, 255, 0.1);
+}
+
+.onb-input.readonly {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Two-column row */
+.onb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── SGPA grid ───────────────────────────────────────────── */
+.onb-sgpa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.onb-sgpa-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.onb-sgpa-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6a6a80;
+}
+
+/* ── Skip notice ─────────────────────────────────────────── */
+.onb-skip-notice {
+  background: rgba(74, 125, 255, 0.06);
+  border: 1px solid rgba(74, 125, 255, 0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  color: #7a9fff;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* ── Action buttons ──────────────────────────────────────── */
+.onb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.onb-btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #4a7dff, #6b5fff);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.onb-btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.onb-btn-primary:hover::after { transform: translateX(100%); }
+.onb-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(74, 125, 255, 0.3); }
+.onb-btn-primary:active { transform: translateY(0); }
+
+.onb-btn-primary.gold {
+  background: linear-gradient(135deg, #d4a843, #f0d078);
+  color: #0a0a14;
+}
+.onb-btn-primary.gold:hover { box-shadow: 0 8px 20px rgba(212, 168, 67, 0.35); }
+
+.onb-btn-skip {
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  color: #6a6a80;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.onb-btn-skip:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #9a9ab0;
+}
+
+/* ── Back link ───────────────────────────────────────────── */
+.onb-back {
+  background: none;
+  border: none;
+  color: #5a5a70;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  transition: color 0.2s;
+}
+.onb-back:hover { color: #8a8aaa; }
+
+/* ── Loading/saving state ────────────────────────────────── */
+.onb-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.onb-saving {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #6a6a80;
+  margin-top: 12px;
+}
+
+.onb-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-top-color: #4a7dff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Error state ─────────────────────────────────────────── */
+.onb-error {
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: #ff8080;
+  margin-top: 12px;
+}
+
+/* ── Step 4 goal inputs ──────────────────────────────────── */
+.onb-goal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Step 1 – profile avatar ─────────────────────────────── */
+.onb-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.onb-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a7dff, #6b5fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.onb-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.onb-avatar-info {
+  flex: 1;
+}
+
+.onb-avatar-email {
+  font-size: 0.8rem;
+  color: #6a6a80;
+  display: block;
+}
+
+.onb-avatar-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c0c0d0;
+  display: block;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .onb-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .onb-row,
+  .onb-sgpa-grid,
+  .onb-goal-row {
+    grid-template-columns: 1fr;
+  }
+
+  .onb-title {
+    font-size: 1.3rem;
+  }
+}

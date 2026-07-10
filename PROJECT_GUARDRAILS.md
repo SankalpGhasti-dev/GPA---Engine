@@ -185,6 +185,17 @@ When adding new semesters:
 
 ---
 
+## Multi-College & Profile Guardrails
+
+When working with user profiles and college data:
+
+1. **Dashboard must remain data-driven** — Deriving statuses (Active, Completed, Coming Soon) dynamically from the user's `currentSemester`.
+2. **New colleges must be added via configuration files** — E.g., `src/data/colleges/newcollege.js`. Never hardcode college logic in the UI or Engine.
+3. **No hardcoded semester logic** — Always rely on college configurations to calculate credit weights for CGPA.
+4. **Firestore is the Source of Truth** — `localStorage` is used ONLY as a cache for offline support and immediate UI feedback.
+
+---
+
 ## Firebase Guardrails
 
 | Do | Don't |

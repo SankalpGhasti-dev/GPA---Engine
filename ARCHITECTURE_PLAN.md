@@ -326,18 +326,14 @@ Stored in Firestore `users/{uid}`. Never shown again unless user edits profile s
 {
   name: string,
   email: string,
-  photoURL: string,
+  photoURL: string | null,
+  collegeId: string,           // e.g. "sitcoe-ichalkaranji"
+  collegeName: string,         // e.g. "Sharad Institute of Technology..."
+  university: string,
   branch: string,
-  academicYear: number,
+  currentYear: number,
   currentSemester: number,
-  collegeName: string,
-  targetCGPA: string,
-  targetSGPA: string,
   onboardingComplete: boolean,
-  cgpaHistory: {                    // optional, may also live in academic
-    "1": { sgpa: number, credits: number },
-    "2": { sgpa: number, credits: number }
-  },
   createdAt: timestamp,
   updatedAt: timestamp
 }
@@ -347,14 +343,22 @@ Stored in Firestore `users/{uid}`. Never shown again unless user edits profile s
 
 ```javascript
 {
-  cgpaHistory: {
-    "<semester>": { sgpa: number, credits: number }
+  sem1SGPA: number | null,
+  sem2SGPA: number | null,
+  sem3SGPA: number | null,
+  sem4SGPA: number | null,
+  sem5SGPA: number | null,
+  sem6SGPA: number | null,
+  sem7SGPA: number | null,
+  sem8SGPA: number | null,
+  goals: {
+    targetCGPA: number | null,
+    targetSGPA: number | null
   },
   semesters: {
     "3": {
       marks: { "<code>": { ca1, ca2, ese, viva, practical } },
       customNames: { "SEM3_MINOR": string, "SEM3_ELECTIVE": string },
-      targetSGPA: string,
       workflowMode: "marks" | "planning"
     }
   },
@@ -426,17 +430,18 @@ Session: onAuthStateChanged → App.js user state
 
 | File | Purpose |
 |------|---------|
-| `src/services/userData.js` | Load/save profile and academic data |
-| `src/hooks/useUserData.js` | React hook wrapping userData service |
+| `src/services/profileService.js` | Load/save profile and academic data (Firestore + localStorage) |
+| `src/hooks/useUserData.js` | React hook wrapping profileService, computes real-time CGPA |
 
 ### Sync Strategy
 
 1. Load from Firestore on mount
 2. Cache to localStorage immediately
 3. Write to localStorage on every change
-4. Debounce Firestore writes (1200–1500ms)
+4. Debounce Firestore writes (1200ms)
 5. Skip first write after load to prevent stale overwrites
 6. Skip Firestore entirely for `LOCAL_USER`
+7. Use `merge: true` on all writes to prevent data loss
 
 ---
 
@@ -447,12 +452,12 @@ src/
 ├── App.js
 ├── components/
 │   ├── AuthPage.js
-│   ├── Onboarding.js
+│   ├── Onboarding.js         (New V2 Profile Setup)
 │   ├── Dashboard.js
 │   ├── SemesterGoalSelection.js
 │   ├── Sem3Workspace.js
 │   ├── UnderDevelopment.js
-│   ├── ProfileSettings.js
+│   ├── ProfileModal.js       (New V2 Edit Profile)
 │   ├── MarksMode.js          (legacy Sem II — preserved)
 │   ├── TargetMode.js         (legacy Sem II — preserved)
 │   ├── shared/
@@ -463,6 +468,11 @@ src/
 │   ├── engine.js
 │   ├── semesterEngine.js
 │   ├── sem3Engine.js
+│   ├── colleges/
+│   │   ├── index.js          (College configuration registry)
+│   │   ├── sitcoe.js
+│   │   ├── dypatil.js
+│   │   └── other.js
 │   └── semesters/
 │       ├── index.js
 │       └── sem3.js
@@ -472,7 +482,7 @@ src/
 ├── hooks/
 │   └── useUserData.js
 └── services/
-    └── userData.js
+    └── profileService.js
 ```
 
 ---
