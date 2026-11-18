@@ -80,10 +80,10 @@ Reusable marking patterns across semesters:
 | `theory100` | CA1(10) + CA2(10) + Midsem(30) + Endsem(50) = 100 | Sem II legacy |
 | `theory50` | CA1(5) + CA2(5) + Midsem(15) + Endsem(25) = 50 | Sem II legacy |
 | `lab` | CA1(25) + CA2(25) = 50 | Sem II legacy |
-| `theory100_ese` | CA1(25) + CA2(25) + ESE(50) = 100 | Sem III theory (3 cr) |
+| `theory100_ese` | CA1(10) + CA2(10) + MSE(30) + ESE(50) = 100 | Sem III theory (3 cr) |
 | `theory50_ca25` | CA1(25) + CA2(25) = 50 | Sem III theory (≤2 cr) |
-| `lab_viva` | CA1(15) + CA2(15) + Viva(20) + Practical(50) = 100 | Sem III labs |
-| `custom_theory50` | CA1(25) + CA2(25) = 50, user-defined name | Sem III electives |
+| `lab_viva` | CA1(15) + CA2(15) + Oral/Viva(20) = 50 | Sem III labs & project |
+| `custom_theory100` | CA1(10) + CA2(10) + MSE(30) + ESE(50) = 100, user-defined name | Sem III electives |
 
 ---
 
@@ -111,8 +111,9 @@ Reusable marking patterns across semesters:
 | Code | `SEM3_MATH` |
 | Credits | 3 |
 | Type | `theory100_ese` |
-| CA1 | 25 |
-| CA2 | 25 |
+| CA1 | 10 |
+| CA2 | 10 |
+| MSE | 30 |
 | ESE | 50 |
 | **Total** | **100** |
 
@@ -122,8 +123,9 @@ Reusable marking patterns across semesters:
 | Code | `SEM3_DSA` |
 | Credits | 3 |
 | Type | `theory100_ese` |
-| CA1 | 25 |
-| CA2 | 25 |
+| CA1 | 10 |
+| CA2 | 10 |
+| MSE | 30 |
 | ESE | 50 |
 | **Total** | **100** |
 
@@ -133,8 +135,9 @@ Reusable marking patterns across semesters:
 | Code | `SEM3_CN` |
 | Credits | 3 |
 | Type | `theory100_ese` |
-| CA1 | 25 |
-| CA2 | 25 |
+| CA1 | 10 |
+| CA2 | 10 |
+| MSE | 30 |
 | ESE | 50 |
 | **Total** | **100** |
 
@@ -183,9 +186,10 @@ Reusable marking patterns across semesters:
 |-------|-------|
 | Code | `SEM3_MINI` |
 | Credits | 1 |
-| Type | `theory50_ca25` |
-| CA1 | 25 |
-| CA2 | 25 |
+| Type | `lab_viva` |
+| CA1 | 15 |
+| CA2 | 15 |
+| Oral/Viva | 20 |
 | **Total** | **50** |
 
 ---
@@ -200,9 +204,8 @@ Reusable marking patterns across semesters:
 | Type | `lab_viva` |
 | CA1 | 15 |
 | CA2 | 15 |
-| Viva | 20 |
-| Practical | 50 |
-| **Total** | **100** |
+| Oral/Viva | 20 |
+| **Total** | **50** |
 
 #### Computer Networks Lab
 | Field | Value |
@@ -212,9 +215,8 @@ Reusable marking patterns across semesters:
 | Type | `lab_viva` |
 | CA1 | 15 |
 | CA2 | 15 |
-| Viva | 20 |
-| Practical | 50 |
-| **Total** | **100** |
+| Oral/Viva | 20 |
+| **Total** | **50** |
 
 #### Web Technology Lab
 | Field | Value |
@@ -224,9 +226,8 @@ Reusable marking patterns across semesters:
 | Type | `lab_viva` |
 | CA1 | 15 |
 | CA2 | 15 |
-| Viva | 20 |
-| Practical | 50 |
-| **Total** | **100** |
+| Oral/Viva | 20 |
+| **Total** | **50** |
 
 ---
 
@@ -237,22 +238,26 @@ Reusable marking patterns across semesters:
 |-------|-------|
 | Code | `SEM3_MINOR` |
 | Credits | 2 (fixed) |
-| Type | `custom_theory50` |
+| Type | `custom_theory100` |
 | Subject Name | **User-entered** (dynamic) |
-| CA1 | 25 |
-| CA2 | 25 |
-| **Total** | **50** |
+| CA1 | 10 |
+| CA2 | 10 |
+| MSE | 30 |
+| ESE | 50 |
+| **Total** | **100** |
 
 #### Open Elective
 | Field | Value |
 |-------|-------|
 | Code | `SEM3_ELECTIVE` |
 | Credits | 2 (fixed) |
-| Type | `custom_theory50` |
+| Type | `custom_theory100` |
 | Subject Name | **User-entered** (dynamic) |
-| CA1 | 25 |
-| CA2 | 25 |
-| **Total** | **50** |
+| CA1 | 10 |
+| CA2 | 10 |
+| MSE | 30 |
+| ESE | 50 |
+| **Total** | **100** |
 
 Custom subject names are stored in Firestore:
 ```

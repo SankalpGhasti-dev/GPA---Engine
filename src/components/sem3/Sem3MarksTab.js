@@ -170,7 +170,10 @@ export default function Sem3MarksTab({
                         const alreadyHave = result?.total || 0;
                         const stillNeed = Math.max(0, minM - alreadyHave);
                         const pendingMaxM = comps
-                          .filter(c => !enteredComps[c.key] && enteredComps[c.key] !== 0)
+                          .filter(c => {
+                            const val = enteredComps[c.key];
+                            return val === null || val === undefined || val === "";
+                          })
                           .reduce((s, c) => s + c.max, 0);
                         const possible = stillNeed <= pendingMaxM;
                         return (

@@ -210,20 +210,23 @@ export function createSemesterEngine(subjects, totalCredits, getComponentsFn, ge
 
   // ── Control Index ─────────────────────────────────────
   function controlIndex(type) {
-    if (type === "theory100_ese") {
-      // CA1(25) + CA2(25) = 50 controlled, ESE(50) = exam
-      return { controlled: 50, partial: 0, exam: 50, total: 100 };
+    if (type === "theory100_ese" || type === "theory100" || type === "custom_theory100") {
+      // CA1(10) + CA2(10) [or FET(20)] = 20 controlled, MSE(30) = partial, ESE(50) = exam
+      return { controlled: 20, partial: 30, exam: 50, total: 100 };
     }
-    if (type === "theory50_ca25") {
-      // CA1(25) + CA2(25) = fully controlled
+    if (type === "theory50_ca25" || type === "custom_theory50") {
+      // CA1(25) + CA2(25) = 50 controlled
       return { controlled: 50, partial: 0, exam: 0, total: 50 };
     }
     if (type === "lab_viva") {
-      // CA1(15) + CA2(15) + Practical(50) = 80 controlled, Viva(20) = partial
-      return { controlled: 80, partial: 20, exam: 0, total: 100 };
+      // CA1(15) + CA2(15) = 30 controlled, Oral/Viva(20) = partial
+      return { controlled: 30, partial: 20, exam: 0, total: 50 };
     }
-    if (type === "custom_theory50") {
-      return { controlled: 50, partial: 0, exam: 0, total: 50 };
+    if (type === "lab100") {
+      return { controlled: 100, partial: 0, exam: 0, total: 100 };
+    }
+    if (type === "ese50") {
+      return { controlled: 0, partial: 0, exam: 50, total: 50 };
     }
     return { controlled: 0, partial: 0, exam: 0, total: 0 };
   }

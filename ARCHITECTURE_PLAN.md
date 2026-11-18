@@ -357,7 +357,7 @@ Stored in Firestore `users/{uid}`. Never shown again unless user edits profile s
   },
   semesters: {
     "3": {
-      marks: { "<code>": { ca1, ca2, ese, viva, practical } },
+      marks: { "<code>": { ca1, ca2, mse, ese, viva } },
       customNames: { "SEM3_MINOR": string, "SEM3_ELECTIVE": string },
       workflowMode: "marks" | "planning"
     }
@@ -396,10 +396,10 @@ Stored in Firestore `users/{uid}`. Never shown again unless user edits profile s
 
 | Type | Components | Max Marks |
 |------|------------|-----------|
-| `theory100_ese` | CA1(25), CA2(25), ESE(50) | 100 |
+| `theory100_ese` | CA1(10), CA2(10), MSE(30), ESE(50) | 100 |
 | `theory50_ca25` | CA1(25), CA2(25) | 50 |
-| `lab_viva` | CA1(15), CA2(15), Viva(20), Practical(50) | 100 |
-| `custom_theory50` | CA1(25), CA2(25) — user-named subject | 50 |
+| `lab_viva` | CA1(15), CA2(15), Oral/Viva(20) | 50 |
+| `custom_theory100` | CA1(10), CA2(10), MSE(30), ESE(50) — user-named elective | 100 |
 
 ### Shared Grade System
 

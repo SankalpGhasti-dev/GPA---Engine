@@ -14,15 +14,15 @@ export default function Sem3ControlTab({ controlIdx, subjects, getComponents, ge
       </div>
       <div className="ci-legend-full">
         <div className="clf-item"><span className="ci-dot controlled" />Student Controlled (CA1, CA2, Lab practicals): {controlIdx.controlled}%</div>
-        <div className="clf-item"><span className="ci-dot partial" />Partially Controlled (Viva): {controlIdx.partial}%</div>
+        <div className="clf-item"><span className="ci-dot partial" />Partially Controlled (Viva, MSE): {controlIdx.partial}%</div>
         <div className="clf-item"><span className="ci-dot exam" />Exam Only (ESE): {controlIdx.exam}%</div>
       </div>
       <div className="control-subject-list">
         {subjects.map(s => {
           const comps = getComponents(s.type);
-          const controlled = comps.filter(c => c.key === "ca1" || c.key === "ca2" || c.key === "practical").reduce((x, c) => x + c.max, 0);
-          const partial = comps.filter(c => c.key === "viva").reduce((x, c) => x + c.max, 0);
-          const exam = comps.filter(c => c.key === "ese").reduce((x, c) => x + c.max, 0);
+          const controlled = comps.filter(c => c.key === "ca1" || c.key === "ca2" || c.key === "practical" || c.key === "fet").reduce((x, c) => x + c.max, 0);
+          const partial = comps.filter(c => c.key === "viva" || c.key === "mse").reduce((x, c) => x + c.max, 0);
+          const exam = comps.filter(c => c.key === "ese" || c.key === "endsem").reduce((x, c) => x + c.max, 0);
           const total = getMaxMarks(s.type);
           return (
             <div key={s.code} className="cs-row">
