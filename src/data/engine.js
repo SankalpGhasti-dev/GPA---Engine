@@ -168,13 +168,11 @@ export function reverseEngineer(targetSGPA, lockedSubjects) {
   const targetCP = targetSGPA * TOTAL_CREDITS;
 
   let lockedCP = 0;
-  let lockedCredits = 0;
   const lockedCodes = new Set();
 
   for (const [code, result] of Object.entries(lockedSubjects)) {
     if (result && result.creditPoints !== null) {
       lockedCP += result.creditPoints;
-      lockedCredits += result.credits;
       lockedCodes.add(code);
     }
   }
